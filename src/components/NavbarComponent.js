@@ -75,7 +75,7 @@ const NavbarComponent = (props) => {
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <Link to="/" class="nav-link active" aria-current="page" href="#">
+                    <Link to="/" class="nav-link active" aria-current="page">
                       Products
                     </Link>
                   </li>
