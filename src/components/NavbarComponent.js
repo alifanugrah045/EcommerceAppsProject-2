@@ -42,19 +42,11 @@ const NavbarComponent = (props) => {
                   </li>
                 </ul>
                 <div class="btnku ms-auto">
-                {isAuthenticated ? (
-              <ButtonComponent
-                label="Logout"
-                className="btn btn-primary text-white"
-                OnClick={() => logoutHandler()}
-              />
-            ) : (
-              <ButtonComponent
-                label="Login"
-                className="btn btn-primary text-white"
-                OnClick={() => navigate("/login")}
-              />
-            )}
+                  {isAuthenticated ? (
+                    <ButtonComponent label="Logout" className="btn btn-primary text-white" OnPress={() => logoutHandler()} />
+                  ) : (
+                    <ButtonComponent label="Login" className="btn btn-primary text-white" OnPress={() => navigate("/login")} />
+                  )}
                 </div>
               </div>
             </div>
@@ -81,14 +73,12 @@ const NavbarComponent = (props) => {
                   </li>
                   <li class="nav-item">
                     <Link to="/rekap-penjualan" class="nav-link" href="#">
-                      Cart
+                      Rekap Penjualan
                     </Link>
                   </li>
                 </ul>
                 <div class="btnku ms-auto">
-                  <ButtonComponent label="Logout" className="btn btn-primary text-white"
-                  OnClick={() => logoutHandler()}
-                  />
+                  <ButtonComponent label="Logout" className="btn btn-primary text-white" OnPress={() => logoutHandler()} />
                 </div>
               </div>
             </div>
@@ -97,11 +87,7 @@ const NavbarComponent = (props) => {
       );
     }
   };
-  return (
-
-      <div>{NavbarType(props.type)}</div>
-
-  );
+  return <div>{NavbarType(props.type)}</div>;
 };
 
 export default NavbarComponent;

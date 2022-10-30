@@ -46,7 +46,7 @@ export const userSlice = createSlice({
     },
     checkEmail: (state, action) => {
       if (state.email === action.payload) {
-        state.username = "jimmie_k";
+        state.username = "kate_h";
       } else if (state.adminEmail === action.payload) {
         state.adminStatus = true;
       }

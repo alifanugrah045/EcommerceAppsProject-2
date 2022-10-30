@@ -1,11 +1,7 @@
 import CardComponent from "../components/CardComponent";
 import { useNavigate, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchProducts,
-  plusStock,
-  minusStock,
-} from "../redux/productSlice";
+import { fetchProducts, plusStock, minusStock, decreaseQuantity } from "../redux/productSlice";
 import { addCart, updateCartItem } from "../redux/cartSlice";
 import React, { useEffect } from "react";
 
@@ -17,7 +13,7 @@ const ProductsPage = (props) => {
   const { isAuthenticated } = useSelector((state) => state.user);
 
   // const intersection = data.filter((element) => cart.includes(element));
-  // console.log(cart);
+  console.log("cart product", cart);
 
   useEffect(() => {
     if (data.length === 0) {
@@ -42,43 +38,45 @@ const ProductsPage = (props) => {
     } else {
       navigate("/login");
     }
+    console.log("item", item);
   };
 
   return (
-    <div className="productList">
-      <h1>products</h1>
-      {props.role === "admin"
-        ? data.map((product) => {
-            return (
-              <CardComponent
-                key={product.id}
-                title={product.title}
-                category={product.category}
-                image={product.image}
-                price={product.price}
-                value={product.quantity}
-                // OnUpdate={dispatch(updateQuantity(newItem))}
-                OnPlus={() => dispatch(plusStock(product))}
-                OnMinus={() => dispatch(minusStock(product))}
-                quantity={product.quantity}
-                type="admin"
-              />
-            );
-          })
-        : data.map((product) => {
-            return (
-              <CardComponent
-                key={product.id}
-                title={product.title}
-                category={product.category}
-                image={product.image}
-                price={product.price}
-                quantity={product.quantity}
-                OnView={() => navigate(`/product/${product.id}`)}
-                OnCart={() => addCartHandler(product)}
-              />
-            );
-          })}
+    <div className="productList container">
+      <h1 className="mt-2">Product List</h1>
+      <div class="row d-flex justify-content-center">
+        {props.role === "admin"
+          ? data.map((product) => {
+              return (
+                <CardComponent
+                  key={product.id}
+                  title={product.title}
+                  category={product.category}
+                  image={product.image}
+                  price={product.price}
+                  value={product.quantity}
+                  OnPlus={() => dispatch(plusStock(product))}
+                  OnMinus={() => dispatch(minusStock(product))}
+                  quantity={product.quantity}
+                  type="admin"
+                />
+              );
+            })
+          : data.map((product) => {
+              return (
+                <CardComponent
+                  key={product.id}
+                  title={product.title}
+                  category={product.category}
+                  image={product.image}
+                  price={product.price}
+                  quantity={product.quantity}
+                  OnView={() => navigate(`/product/${product.id}`)}
+                  OnCart={() => addCartHandler(product)}
+                />
+              );
+            })}
+      </div>
     </div>
   );
 };
