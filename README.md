@@ -9,5 +9,5 @@ Admin Role:
 Email: admin@bukapedia.com
 Password: admin123
 Customer Role:
-Email: kate@gmail.com
-Password: kfejk@*_
+Email: morrison@gmail.com
+Password: 83r5^_
